@@ -1,5 +1,5 @@
 # movida-aas
-"Movida as a service is an API that aims to transform your sentence's nouns into the 'movida' string
+Movida as a service is an API that aims to transform your sentence's nouns into the 'movida' string
 
 # Contributions
 
