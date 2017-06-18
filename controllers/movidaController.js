@@ -1,15 +1,14 @@
 // Requires:
 const h = require('../utils/helpers')
 
-// Google API configuration
-const language = require('@google-cloud/language')
-
 require('dotenv').config()
 
-const googleConfig = {
+// Google API configuration
+const language = require('@google-cloud/language')({
+
   projectId: process.env.GOOGLE_CLOUD_PROJECT_ID,
   keyFilename: process.env.GOOGLE_CLOUD_AUTH_FILE
-}
+})
 
 // Logger configuration
 const logger = require('loggeraas-node-wrapper')
@@ -35,12 +34,14 @@ exports.movidizator = (req, res, next) => {
     return
   }
 
-  // TODO Call Google API and retrieve the analyzed string
+  // TOTEST Call Google API and retrieve the analyzed string
+  language.annotate(req.body.text).then((data) => {
+    // TODO Process the string and re-place every noun by movida <-- Language expert needed
 
-  // TODO Process the string and re-place every noun by movida <-- Language expert needed
+    // TOTEST Log in logger-aas
+    //l.log({ input: req.body.text, output: 'translation-should-be-here' }) // only logs succesful requests
 
-  // TOTEST Log in logger-aas
-  l.log({ input: req.body.text, output: 'translation-should-be-here' }) // only logs succesful requests
+    // TODO Deliver the cake. I mean, response.
+  })
 
-  // TODO Deliver the cake. I mean, response.
 }
